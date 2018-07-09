@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 
 
 import Person from './Person/Person';
@@ -59,7 +59,7 @@ class App extends Component {
     }
 
     return (
-        <div className="App">
+      <div className={classes.App}>
           <h1>Hi, This is a new React App</h1>
           <button style={style} onClick = {this.togglePersonsHandler}>Toggle Persons</button>
           { persons }
