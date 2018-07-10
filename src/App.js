@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 
 
-import Person from './Person/Person';
+import PersonList from './components/PersonList/PersonList';
+import FrontPage from './components/FrontPage/FrontPage';
 
 class App extends Component {
   state = {
@@ -35,14 +36,11 @@ class App extends Component {
     if(this.state.showPerson) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-                      click={() => this.deletePersonHandler(index)} 
-                      key={index} 
-                      name={person} 
-                      changed={(event) => this.nameChangedHandler(event, index)}
-                    />
-          })}
+          <PersonList
+            persons = {this.state.persons} 
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+          />
         </div>
       );
 
@@ -51,10 +49,7 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-          <h1>Hi, This is a new React App</h1>
-          <button
-              className = {btnClass} 
-              onClick = {this.togglePersonsHandler}>Toggle Persons</button>
+        <FrontPage btnClass={btnClass} clicked={this.togglePersonsHandler} />
           { persons }
         </div>
     );
